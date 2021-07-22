@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linear_ayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="53dp"
+        android:layout_height="59dp"
+        android:src="@drawable/arrow_back" />
+
+    <!--    <com.example.cat_caring.ui.activity.donate-->
+<!--        android:id="@+id/viewGroup"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="49dp">-->
+<!---->
+<!--    </com.example.cat_caring.ui.activity.donate>-->
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="489dp" />
+
+    <Button
+        android:id="@+id/submitBtn"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:text="确定" />
+
+</LinearLayout>

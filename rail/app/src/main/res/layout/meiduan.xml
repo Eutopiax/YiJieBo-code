@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="202dp"
+        tools:srcCompat="@drawable/meiduan" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="410dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="美国短毛猫："
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="        美国短毛猫是原产于美国的一种猫，其祖先为欧洲早期移民带到北美的猫种，并与英国短毛猫和欧洲短毛猫同类。美国短毛猫的身体匀称、有力量，且活泼温顺。幼年短毛猫圆头圆脑，软绵绵的手感和灵活的四肢很是讨人喜欢"            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="18sp" />
+    </LinearLayout>
+</LinearLayout>

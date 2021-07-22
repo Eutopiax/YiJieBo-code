@@ -1,0 +1,1220 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>易接驳后台管理系统</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/static/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/static/assets/css/admin.css">
+    <link rel="stylesheet" href="/static/assets/css/app.css">
+<link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
+      <style type="text/css">
+
+            #personcenter.body {
+            }
+                font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+            }
+            #personcenter.ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+            }
+            #personcenter.li {
+                float: left;
+            }
+            .dropbtn{
+                  margin-right:50px;
+            }
+            #personcenter.li a, .dropbtn {
+                display: inline-block;
+                color: #0a628f;
+                text-align: center;
+
+                text-decoration: none;
+            }
+
+            li.dropdown {
+                display: inline-block;
+            }
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #0a6999;
+                min-width: 60px;
+
+            }
+            .dropdown-content a {
+
+                padding: 12px 6px;
+                text-decoration: none;
+                display: block;
+                text-align: left;
+            }
+            .dropdown-content a:hover {
+                color: #ffbe40;
+
+            }
+            .show {
+                display: block;
+            }
+
+    </style>
+
+ <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+
+    <style>
+body  {
+    background-image: url("/static/assets/img/background.png");
+}
+        #container {
+          width: 1000px;
+          height: 600px;
+        }
+         #panel {
+            position: fixed;
+            background-color: white;
+            max-height: 90%;
+            overflow-y: auto;
+            top: 10px;
+            right: 10px;
+            width: 280px;
+        }
+        #panel .amap-lib-driving {
+            border-radius: 4px;
+            overflow: hidden;
+        }
+    </style>
+
+</head>
+
+<body data-type="generalComponents">
+
+
+    <header class="am-topbar am-topbar-inverse admin-header">
+        <div class="am-topbar-brand">
+{#            <a href="javascript:;" class="tpl-logo">#}
+{#                <img src="/static/assets/img/logo.png" alt="">#}
+{#            </a>#}
+{#            <h2 color = "#6495ED">易接驳后台管理系统</h2>#}
+              <img src="../static/assets/img/title.png">
+        </div>
+        <div class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right">
+
+        </div>
+
+
+
+        <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+
+            <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list tpl-header-list">
+
+ <div id="personcenter">
+                <ul>
+                 <li class="dropdown">
+                    <a id="a" href="javascript:void(0)" class="dropbtn" onclick="showList(this)">
+                        <img src="../static/assets/img/mima.png" style=""width="20px"height="20px">
+                    </a>
+                    <div class="dropdown-content" id="dropdown-a">
+                        <a href="/modifyPassword">修改密码</a>
+                        <a href="/">登出</a>
+
+                    </div>
+                </li>
+                </ul>
+                <script type="text/javascript">
+            function showList(o) {
+                //1.把其他的二级ul都隐藏，
+        //        hideList("dropdown-content" + o.id);
+                //把其他的二级ul隐藏方式1
+                hideList("dropdown-" + o.id);
+                //把其他的二级ul隐藏方式2
+        //        hideList('');
+
+
+                //2.再切换自己的show。
+
+        //        document.getElementById("dropdown-" + o.id).classList.toggle("show");
+                var drop = document.getElementById("dropdown-" + o.id);
+                if (drop.classList.contains('show')) {
+                    drop.classList.remove('show');
+        //            alert("yichu");
+                }else{
+                    drop.classList.add('show');
+        //            alert("xianshi");
+                }
+            }
+
+            //隐藏不是自己对应的下拉div。
+            function hideList(option) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.id != option) {
+                        if (openDropdown.classList.contains('show')) {
+                            openDropdown.classList.remove('show');
+                        }
+                    }
+                }
+            }
+
+
+
+            window.onclick = function(e) {
+                if (!e.target.matches('.dropbtn')) {
+                    hideList("");
+                }
+            }
+</script>
+                    </div>
+            </ul>
+        </div>
+    </header>
+
+
+
+
+
+
+
+    <div class="tpl-page-container tpl-page-header-fixed">
+
+{#        左侧导航栏#}
+        <div class="tpl-left-nav tpl-left-nav-hover">
+            <div class="tpl-left-nav-title">
+                功能列表
+            </div>
+            <div class="tpl-left-nav-list">
+                <ul class="tpl-left-nav-menu">
+                    <li class="tpl-left-nav-item">
+                        <a href="/teacher_index" class="nav-link active">
+                            <i class="am-icon-home"></i>
+                            <span>系统首页</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/guanliban" class="nav-link">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>车辆状态管理</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+{#        左侧导航栏#}
+
+        <div class="tpl-content-wrapper">
+
+
+                  <p>
+<span style="
+     text-align: center;
+     padding-bottom: 6px;
+     padding-left: 20px;
+     padding-right: 500px;
+     color: #FFB94F;
+     padding-top: 6px;
+     background-color:#ffffff;
+     box-shadow: 10px 10px 5px #888888;"
+
+><strong>
+<span style="font-size: 18px;">车辆实时监控</span></strong></span></p>
+                <div class="tpl-block">
+
+ <div id="container"></div>
+<script type="text/javascript" src='//webapi.amap.com/maps?v=2.0&key=86dcb60681bb197d842d1b5832ab624f'></script>
+    <!-- UI组件库 1.0 -->
+    <script src="//webapi.amap.com/ui/1.1/main.js?v=1.1.1"></script>
+                    <!-- 加载地图JSAPI脚本 -->
+                      <script type="text/javascript">
+                        {#var map = new AMap.Map('container', {#}
+                        {#    resizeEnable: true, //是否监控地图容器尺寸变化#}
+                        {#    zoom:11, //初始化地图层级#}
+                        {#    center: [116.397428, 39.90923] //初始化地图中心点#}
+                        {# }); #}
+                        var colors = [
+            "#3366cc", "#dc3912", "#ff9900", "#109618", "#990099", "#0099c6", "#dd4477", "#66aa00",
+            "#b82e2e", "#316395", "#994499", "#22aa99", "#aaaa11", "#6633cc", "#e67300", "#8b0707",
+            "#651067", "#329262", "#5574a6", "#3b3eac"
+        ];
+               var map = new AMap.Map('container', {
+        zoom: 10
+    });
+
+    AMapUI.load(['ui/misc/PathSimplifier', 'lib/$'], function(PathSimplifier, $) {
+
+        if (!PathSimplifier.supportCanvas) {
+            alert('当前环境不支持 Canvas！');
+            return;
+        }
+
+
+initPage(PathSimplifier);
+    });
+    AMapUI.loadUI(['overlay/AwesomeMarker'], function(AwesomeMarker) {
+    //启动页面
+    initPage1(AwesomeMarker)
+    });
+
+    function initPage(PathSimplifier) {
+    //创建组件实例
+    var pathSimplifierIns = new PathSimplifier({
+        zIndex: 100,
+        map: map, //所属的地图实例
+        getPath: function(pathData, pathIndex) {
+            //返回轨迹数据中的节点坐标信息，[AMap.LngLat, AMap.LngLat...] 或者 [[lng|number,lat|number],...]
+            return pathData.path;
+        },
+        getHoverTitle: function(pathData, pathIndex, pointIndex) {
+            //返回鼠标悬停时显示的信息
+            if (pointIndex >= 0) {
+                //鼠标悬停在某个轨迹节点上
+                return pathData.name + '，点:' + pointIndex + '/' + pathData.path.length;
+            }
+            //鼠标悬停在节点之间的连线上
+            return pathData.name + '，路线:' + pathData.route;
+        },
+        renderOptions: {
+            //轨迹线的样式
+            pathLineStyle: {
+                strokeStyle:'red',
+                lineWidth: 4,
+                dirArrowStyle: true
+            }
+        }
+    });
+     //这里构建两条简单的轨迹，仅作示例
+    pathSimplifierIns.setData([
+        {
+        name: '班车1',
+        route:'丰台科技园地铁站->时代财富天地->科学城->汉威国际广场->丰台科技园地铁站',
+        path: [
+            [116.297176, 39.825233],
+            [116.297177, 39.825169],
+            [116.295219, 39.825098],
+            [116.293552, 39.825061],
+            [116.289987,39.824926],
+            [116.289868,39.827332],
+            [116.289857,39.827493],
+            [116.289734,39.827493],
+            [116.289449,39.827464],
+            [116.289321,39.82748],
+            [116.288242,39.827909],
+            [116.287357,39.828341],
+            [116.28696,39.828766],
+            [116.285962,39.830397],
+            [116.287776,39.830904],
+            [116.285969,39.830376],
+            [116.283078,39.829912],
+            [116.284532,39.826838],
+            [116.286721,39.825832],
+            [116.285642,39.824382],
+            [116.286667,39.823928],
+            [116.288062,39.823343],
+            [116.28803,39.822758],
+            [116.293576,39.822659],
+            [116.293555,39.825057],
+            [116.297176,39.825177]
+        ]
+        }
+    ]);
+
+    //创建一个巡航器
+    var navg0 = pathSimplifierIns.createPathNavigator(0, //关联第1条轨迹
+        {
+            loop: true, //循环播放
+            speed: 50,
+            pathNavigatorStyle: {
+                    width: 33,
+                    height:66,
+                    //使用图片
+                    content: PathSimplifier.Render.Canvas.getImageContent('../static/assets/images/car2.png', onload, onerror),
+
+                }
+        });
+
+    navg0.start();
+
+{#    班车2#}
+    //创建组件实例
+    var pathSimplifierIns1 = new PathSimplifier({
+        zIndex: 100,
+        map: map, //所属的地图实例
+        getPath: function(pathData, pathIndex) {
+            //返回轨迹数据中的节点坐标信息，[AMap.LngLat, AMap.LngLat...] 或者 [[lng|number,lat|number],...]
+            return pathData.path;
+        },
+        getHoverTitle: function(pathData, pathIndex, pointIndex) {
+            //返回鼠标悬停时显示的信息
+            if (pointIndex >= 0) {
+                //鼠标悬停在某个轨迹节点上
+                return pathData.name + '，点:' + pointIndex + '/' + pathData.path.length;
+            }
+            //鼠标悬停在节点之间的连线上
+            return pathData.name + '，路线:' + pathData.route;
+        },
+        renderOptions: {
+            //轨迹线的样式
+            pathLineStyle: {
+                strokeStyle:'blue',
+                lineWidth: 4,
+                dirArrowStyle: true
+            }
+        }
+    });
+     //这里构建两条简单的轨迹，仅作示例
+    pathSimplifierIns1.setData([
+        {
+        name: '班车2',
+        route:'丰台科技园地铁站->崇新大厦->中电传媒大厦->丰台科技园地铁站',
+        path: [
+          [116.297087,39.825296],
+[116.297173,39.827442],
+[116.296926,39.827537],
+[116.293439,39.827617],
+[116.290498,39.827547],
+[116.289344,39.827483],
+[116.287303,39.828389],
+[116.28597,39.830406],
+[116.281051,39.829582],
+[116.280809,39.83013],
+[116.280673,39.830513],
+[116.279852,39.830439],
+[116.279847,39.829904],
+[116.28085,39.826662],
+[116.280818,39.826122],
+[116.280285,39.825198],
+[116.285038,39.823167],
+[116.288079,39.822751],
+[116.291786,39.822706],
+[116.297254,39.822662],
+[116.297061,39.825159]
+        ]
+        }
+    ]);
+
+    //创建一个巡航器
+    var navg1 = pathSimplifierIns1.createPathNavigator(0, //关联第1条轨迹
+        {
+            loop: true, //循环播放
+            speed: 50,
+            pathNavigatorStyle: {
+                    width: 33,
+                    height:66,
+                    //使用图片
+                    content: PathSimplifier.Render.Canvas.getImageContent('../static/assets/images/car2.png', onload, onerror),
+                    strokeStyle: null,
+                    fillStyle: null,
+                }
+        });
+    navg1.start();
+
+{#    班车3#}
+        var pathSimplifierIns3 = new PathSimplifier({
+        zIndex: 100,
+        map: map, //所属的地图实例
+        getPath: function(pathData, pathIndex) {
+            //返回轨迹数据中的节点坐标信息，[AMap.LngLat, AMap.LngLat...] 或者 [[lng|number,lat|number],...]
+            return pathData.path;
+        },
+        getHoverTitle: function(pathData, pathIndex, pointIndex) {
+            //返回鼠标悬停时显示的信息
+            if (pointIndex >= 0) {
+                //鼠标悬停在某个轨迹节点上
+                return pathData.name + '，点:' + pointIndex + '/' + pathData.path.length;
+            }
+            //鼠标悬停在节点之间的连线上
+            return pathData.name + '，路线:' + pathData.route;
+        },
+        renderOptions: {
+            //轨迹线的样式
+            pathLineStyle: {
+                strokeStyle:'#FFFF99',
+                lineWidth: 4,
+                dirArrowStyle: true
+            }
+        }
+    });
+     //这里构建两条简单的轨迹，仅作示例
+    pathSimplifierIns3.setData([
+        {
+        name: '班车3',
+        route:'丰台科技园地铁站->建科兴达大厦->北京汽车博物馆->丰台科技园地铁站',
+        path: [
+  [116.297175,39.825291],
+[116.289987,39.825022],
+[116.289424,39.824985],
+[116.288474,39.825177],
+[116.284582,39.826897],
+[116.283086,39.829902],
+[116.282592,39.833642],
+[116.280039,39.833494],
+[116.279921,39.831542],
+[116.279856,39.829861],
+[116.280007,39.829411],
+[116.283183,39.829959],
+[116.284513,39.826845],
+[116.289019,39.824925],
+[116.297184,39.825172]
+        ]
+        }
+    ]);
+
+    //创建一个巡航器
+    var navg3 = pathSimplifierIns3.createPathNavigator(0, //关联第1条轨迹
+        {
+            loop: true, //循环播放
+            speed: 50,
+            pathNavigatorStyle: {
+                    width: 33,
+                    height:66,
+                    //使用图片
+                    content: PathSimplifier.Render.Canvas.getImageContent('../static/assets/images/car2.png', onload, onerror),
+                    strokeStyle: null,
+                    fillStyle: null,
+                }
+        });
+
+    navg3.start();
+{#    班车3#}
+
+{#    班车4#}
+            var pathSimplifierIns4 = new PathSimplifier({
+        zIndex: 100,
+        map: map, //所属的地图实例
+        getPath: function(pathData, pathIndex) {
+            //返回轨迹数据中的节点坐标信息，[AMap.LngLat, AMap.LngLat...] 或者 [[lng|number,lat|number],...]
+            return pathData.path;
+        },
+        getHoverTitle: function(pathData, pathIndex, pointIndex) {
+            //返回鼠标悬停时显示的信息
+            if (pointIndex >= 0) {
+                //鼠标悬停在某个轨迹节点上
+                return pathData.name + '，点:' + pointIndex + '/' + pathData.path.length;
+            }
+            //鼠标悬停在节点之间的连线上
+            return pathData.name + '，路线:' + pathData.route;
+        },
+        renderOptions: {
+            //轨迹线的样式
+            pathLineStyle: {
+                strokeStyle:'#006600',
+                lineWidth: 4,
+                dirArrowStyle: true
+            }
+        }
+    });
+     //这里构建两条简单的轨迹，仅作示例
+    pathSimplifierIns4.setData([
+        {
+        name: '班车4',
+        route:'丰台科技园地铁站->中国通号大厦->丰台科技园地铁站',
+        path: [
+[116.297185,39.825178],
+
+[116.299681,39.825251],
+
+[116.308332,39.824937],
+
+[116.308378,39.825022],
+
+[116.308455,39.827572],
+
+[116.305561,39.827536],
+
+[116.305485,39.827505],
+
+[116.305484,39.825144],
+
+[116.299605,39.825364],
+
+[116.297177,39.825296]
+        ]
+        }
+    ]);
+
+    //创建一个巡航器
+    var navg4 = pathSimplifierIns4.createPathNavigator(0, //关联第1条轨迹
+        {
+            loop: true, //循环播放
+            speed: 50,
+            pathNavigatorStyle: {
+                    width: 33,
+                    height:66,
+                    //使用图片
+                    content: PathSimplifier.Render.Canvas.getImageContent('../static/assets/images/car2.png', onload, onerror),
+                    strokeStyle: null,
+                    fillStyle: null,
+                }
+        });
+
+    navg4.start();
+{#    班车4#}
+        {#    班车5#}
+          var pathSimplifierIns5 = new PathSimplifier({
+        zIndex: 100,
+        map: map, //所属的地图实例
+        getPath: function(pathData, pathIndex) {
+            //返回轨迹数据中的节点坐标信息，[AMap.LngLat, AMap.LngLat...] 或者 [[lng|number,lat|number],...]
+            return pathData.path;
+        },
+        getHoverTitle: function(pathData, pathIndex, pointIndex) {
+            //返回鼠标悬停时显示的信息
+            if (pointIndex >= 0) {
+                //鼠标悬停在某个轨迹节点上
+                return pathData.name + '，点:' + pointIndex + '/' + pathData.path.length;
+            }
+            //鼠标悬停在节点之间的连线上
+            return pathData.name + '，路线:' + pathData.route;
+        },
+        renderOptions: {
+            //轨迹线的样式
+            pathLineStyle: {
+                strokeStyle:'#FF0099',
+                lineWidth: 4,
+                dirArrowStyle: true
+            }
+        }
+    });
+     //这里构建两条简单的轨迹，仅作示例
+    pathSimplifierIns5.setData([
+        {
+        name: '班车5',
+        route:'丰台科技园地铁站->丰台金茂广场->中海外建工集团有效公司->丰台科技园地铁站',
+        path: [
+[116.297173,39.825175],
+
+[116.297511,39.825089],
+
+[116.299743,39.825184],
+
+[116.300197,39.825173],
+
+[116.300435,39.825232],
+
+[116.302945,39.825145],
+
+[116.302892,39.82269],
+
+[116.293512,39.822691],
+
+[116.293445,39.825052],
+
+[116.297173,39.825184]
+        ]
+        }
+    ]);
+
+    //创建一个巡航器
+    var navg5 = pathSimplifierIns5.createPathNavigator(0, //关联第1条轨迹
+        {
+            loop: true, //循环播放
+            speed:70,
+            pathNavigatorStyle: {
+                   width: 33,
+                    height:66,
+                    //使用图片
+                    content: PathSimplifier.Render.Canvas.getImageContent('../static/assets/images/car2.png', onload, onerror),
+                    strokeStyle: null,
+                    fillStyle: null,
+                }
+        });
+
+    navg5.start();
+        {#    班车5#}
+
+{#    班车8#}
+               var pathSimplifierIns8 = new PathSimplifier({
+        zIndex: 100,
+        map: map, //所属的地图实例
+        getPath: function(pathData, pathIndex) {
+            //返回轨迹数据中的节点坐标信息，[AMap.LngLat, AMap.LngLat...] 或者 [[lng|number,lat|number],...]
+            return pathData.path;
+        },
+        getHoverTitle: function(pathData, pathIndex, pointIndex) {
+            //返回鼠标悬停时显示的信息
+            if (pointIndex >= 0) {
+                //鼠标悬停在某个轨迹节点上
+                return pathData.name + '，点:' + pointIndex + '/' + pathData.path.length;
+            }
+            //鼠标悬停在节点之间的连线上
+            return pathData.name + '，路线:' + pathData.route;
+        },
+        renderOptions: {
+            //轨迹线的样式
+            pathLineStyle: {
+                strokeStyle:'#660000',
+                lineWidth: 4,
+                dirArrowStyle: true
+            }
+        }
+    });
+     //这里构建两条简单的轨迹，仅作示例
+    pathSimplifierIns8.setData([
+        {
+        name: '班车8',
+        route:'丰台科技园地铁站->东旭国际中心->丰台科技园地铁站',
+        path: [
+[116.29723,39.825315],
+
+[116.297343,39.827527],
+
+[116.305476,39.827507],
+
+[116.305551,39.827469],
+
+[116.308447,39.827502],
+
+[116.308496,39.828953],
+
+[116.309719,39.82892],
+
+[116.309896,39.828953],
+
+[116.311671,39.829521],
+
+[116.311677,39.829327],
+
+[116.313109,39.829299],
+
+[116.311763,39.828096],
+
+[116.311725,39.827667],
+
+[116.311618,39.827642],
+
+[116.310947,39.827655],
+
+[116.310915,39.827004],
+
+[116.309284,39.826979],
+
+[116.309204,39.826767],
+
+[116.308455,39.82677],
+
+[116.308385,39.825015],
+
+[116.297217,39.825291]
+        ]
+        }
+    ]);
+
+    //创建一个巡航器
+    var navg8 = pathSimplifierIns8.createPathNavigator(0, //关联第1条轨迹
+        {
+            loop: true, //循环播放
+            speed:70,
+            pathNavigatorStyle: {
+                  width: 33,
+                    height:66,
+                    //使用图片
+                    content: PathSimplifier.Render.Canvas.getImageContent('../static/assets/images/car2.png', onload, onerror),
+                    strokeStyle: null,
+                    fillStyle: null,
+                }
+        });
+
+    navg8.start();
+
+{#    班车8#}
+
+ {#    班车9#}
+         var pathSimplifierIns9 = new PathSimplifier({
+        zIndex: 100,
+        map: map, //所属的地图实例
+        getPath: function(pathData, pathIndex) {
+            //返回轨迹数据中的节点坐标信息，[AMap.LngLat, AMap.LngLat...] 或者 [[lng|number,lat|number],...]
+            return pathData.path;
+        },
+        getHoverTitle: function(pathData, pathIndex, pointIndex) {
+            //返回鼠标悬停时显示的信息
+            if (pointIndex >= 0) {
+                //鼠标悬停在某个轨迹节点上
+                return pathData.name + '，点:' + pointIndex + '/' + pathData.path.length;
+            }
+            //鼠标悬停在节点之间的连线上
+            return pathData.name + '，路线:' + pathData.route;
+        },
+        renderOptions: {
+            //轨迹线的样式
+            pathLineStyle: {
+                strokeStyle:'#9900FF',
+                lineWidth: 4,
+                dirArrowStyle: true
+            }
+        }
+    });
+     //这里构建两条简单的轨迹，仅作示例
+    pathSimplifierIns9.setData([
+        {
+        name: '班车9',
+        route:'丰台科技园地铁站->专利大厦->SEC大厦->金伟凯生物科技园->丰台科技园地铁站',
+        path: [
+[116.297163,39.825198],
+
+[116.299683,39.825249],
+
+[116.305591,39.825039],
+
+[116.305553,39.829786],
+
+[116.302925,39.829799],
+
+[116.300912,39.830304],
+
+[116.297135,39.829979],
+
+[116.297146,39.827668],
+
+[116.296915,39.827553],
+
+[116.293428,39.827619],
+
+[116.290489,39.827545],
+
+[116.289341,39.827483],
+
+[116.287248,39.828422],
+
+[116.286948,39.828781],
+
+[116.280682,39.827195],
+
+[116.280822,39.826663],
+
+[116.280838,39.826523],
+
+[116.280859,39.826119],
+
+[116.282651,39.825332],
+
+[116.282748,39.825324],
+
+[116.283214,39.825118],
+
+[116.282564,39.82419],
+
+[116.285026,39.823177],
+
+[116.288079,39.822761],
+
+[116.293599,39.822691],
+
+[116.297282,39.822692],
+
+[116.297556,39.820039],
+
+[116.297738,39.820064],
+
+[116.297239,39.825185]
+        ]
+        }
+    ]);
+
+    //创建一个巡航器
+    var navg9 = pathSimplifierIns9.createPathNavigator(0, //关联第1条轨迹
+        {
+            loop: true, //循环播放
+            speed:70,
+            pathNavigatorStyle: {
+                    width: 33,
+                    height:66,
+                    //使用图片
+                    content: PathSimplifier.Render.Canvas.getImageContent('../static/assets/images/car2.png', onload, onerror),
+                    strokeStyle: null,
+                    fillStyle: null,
+                }
+        });
+
+    navg9.start();
+  {#    班车9#}
+
+{#    班车10#}
+      var pathSimplifierIns10 = new PathSimplifier({
+        zIndex: 100,
+        map: map, //所属的地图实例
+        getPath: function(pathData, pathIndex) {
+            //返回轨迹数据中的节点坐标信息，[AMap.LngLat, AMap.LngLat...] 或者 [[lng|number,lat|number],...]
+            return pathData.path;
+        },
+        getHoverTitle: function(pathData, pathIndex, pointIndex) {
+            //返回鼠标悬停时显示的信息
+            if (pointIndex >= 0) {
+                //鼠标悬停在某个轨迹节点上
+                return pathData.name + '，点:' + pointIndex + '/' + pathData.path.length;
+            }
+            //鼠标悬停在节点之间的连线上
+            return pathData.name + '，路线:' + pathData.route;
+        },
+        renderOptions: {
+            //轨迹线的样式
+            pathLineStyle: {
+                strokeStyle:'#99CCFF',
+                lineWidth: 4,
+                dirArrowStyle: true
+            }
+        }
+    });
+     //这里构建两条简单的轨迹，仅作示例
+    pathSimplifierIns10.setData([
+        {
+        name: '班车9',
+        route:'丰台科技园地铁站->专利大厦->SEC大厦->金伟凯生物科技园->丰台科技园地铁站',
+        path: [
+[116.297574,39.819732],
+
+[116.298078,39.817169],
+
+[116.291689,39.8166],
+
+[116.290413,39.816505],
+
+[116.290257,39.819851],
+
+[116.284311,39.819723],
+
+[116.284306,39.822146],
+
+[116.284392,39.822595],
+
+[116.284553,39.822875],
+
+[116.284799,39.82325],
+
+[116.287613,39.82706],
+
+[116.288262,39.8279],
+
+[116.289308,39.827488],
+
+[116.289721,39.827488],
+
+[116.293455,39.827628],
+
+[116.296963,39.827529],
+
+[116.297145,39.827459],
+
+[116.297081,39.825305]
+        ]
+        }
+    ]);
+
+    //创建一个巡航器
+    var navg10 = pathSimplifierIns10.createPathNavigator(0, //关联第1条轨迹
+        {
+            loop: true, //循环播放
+            speed:70,
+            pathNavigatorStyle: {
+                    width: 33,
+                    height:66,
+                    //使用图片
+                    content: PathSimplifier.Render.Canvas.getImageContent('../static/assets/images/car2.png', onload, onerror),
+                    strokeStyle: null,
+                    fillStyle: null,
+                }
+        });
+
+    navg10.start();
+{#    班车10#}
+
+{#    班车11#}
+    var pathSimplifierIns11 = new PathSimplifier({
+        zIndex: 100,
+        map: map, //所属的地图实例
+        getPath: function(pathData, pathIndex) {
+            //返回轨迹数据中的节点坐标信息，[AMap.LngLat, AMap.LngLat...] 或者 [[lng|number,lat|number],...]
+            return pathData.path;
+        },
+        getHoverTitle: function(pathData, pathIndex, pointIndex) {
+            //返回鼠标悬停时显示的信息
+            if (pointIndex >= 0) {
+                //鼠标悬停在某个轨迹节点上
+                return pathData.name + '，点:' + pointIndex + '/' + pathData.path.length;
+            }
+            //鼠标悬停在节点之间的连线上
+            return pathData.name + '，路线:' + pathData.route;
+        },
+        renderOptions: {
+            //轨迹线的样式
+            pathLineStyle: {
+                strokeStyle:'#993366',
+                lineWidth: 4,
+                dirArrowStyle: true
+            }
+        }
+    });
+     //这里构建两条简单的轨迹，仅作示例
+    pathSimplifierIns11.setData([
+        {
+        name: '班车12',
+        route:'丰台科技园地铁站->诺德大厦->丰台科技园地铁站',
+        path: [
+[116.297255,39.825187],
+
+[116.29972,39.825252],
+
+[116.300431,39.82523],
+
+[116.300439,39.82716],
+
+[116.30045,39.827522],
+
+[116.300434,39.829694],
+
+[116.300439,39.830225],
+
+[116.297392,39.830019],
+
+[116.297254,39.825308]
+        ]
+        }
+    ]);
+
+    //创建一个巡航器
+    var navg11 = pathSimplifierIns11.createPathNavigator(0, //关联第1条轨迹
+        {
+            loop: true, //循环播放
+            speed:70,
+            pathNavigatorStyle: {
+                    width: 33,
+                    height:66,
+                    //使用图片
+                    content: PathSimplifier.Render.Canvas.getImageContent('../static/assets/images/car2.png', onload, onerror),
+                    strokeStyle: null,
+                    fillStyle: null,
+                }
+        });
+
+    navg11.start();
+{#    班车11#}
+}
+function initPage1(AwesomeMarker) {
+
+    //创建SimpleMarker实例
+    new AwesomeMarker({
+        awesomeIcon: 'address-card',
+        //前景文字
+        iconLabel: {
+            style: {
+                color: '#fff', //设置文字颜色
+
+            }
+        },
+        //图标主题
+        iconTheme: 'default',
+
+        //背景图标样式
+        iconStyle: 'orange',
+
+        //...其他Marker选项...，不包括content
+        map: map,
+
+        position: [116.287577,39.830857],
+         label: {
+                    content: "订单1-时代财富天地",
+
+                    //offset: new AMap.Pixel(27, 25)
+                }
+    });
+     //创建SimpleMarker实例
+    new AwesomeMarker({
+        awesomeIcon: 'address-card',
+        //前景文字
+        iconLabel: {
+            style: {
+                color: '#fff' //设置文字颜色
+            }
+        },
+        //图标主题
+        iconTheme: 'default',
+
+        //背景图标样式
+        iconStyle: 'orange',
+
+        //...其他Marker选项...，不包括content
+        map: map,
+
+        position: [116.286698,39.823962],
+         label: {
+                    content: "订单2-科学城",
+                    //offset: new AMap.Pixel(27, 25)
+                }
+    });
+     //创建SimpleMarker实例
+    new AwesomeMarker({
+        awesomeIcon: 'address-card',
+        //前景文字
+        iconLabel: {
+            style: {
+                color: '#fff' //设置文字颜色
+            }
+        },
+        //图标主题
+        iconTheme: 'default',
+
+        //背景图标样式
+        iconStyle: 'orange',
+
+        //...其他Marker选项...，不包括content
+        map: map,
+
+        position: [116.295214,39.825033],
+         label: {
+                    content: "订单12-汉威国际广场城",
+                    //offset: new AMap.Pixel(27, 25)
+                }
+    });
+    new AwesomeMarker({
+        awesomeIcon: 'address-card',
+        //前景文字
+        iconLabel: {
+            style: {
+                color: '#fff' //设置文字颜色
+            }
+        },
+        //图标主题
+        iconTheme: 'default',
+
+        //背景图标样式
+        iconStyle: 'orange',
+
+        //...其他Marker选项...，不包括content
+        map: map,
+
+        position: [116.293028,39.823904],
+         label: {
+                    content: "订单5-中海外建工集团有效公司",
+                    //offset: new AMap.Pixel(27, 25)
+                }
+    });
+    new AwesomeMarker({
+        awesomeIcon: 'address-card',
+        //前景文字
+        iconLabel: {
+            style: {
+                color: '#fff' //设置文字颜色
+            }
+        },
+        //图标主题
+        iconTheme: 'default',
+
+        //背景图标样式
+        iconStyle: 'orange',
+
+        //...其他Marker选项...，不包括content
+        map: map,
+
+        position: [116.279393,39.830525],
+         label: {
+                    content: "订单7-丰台科技园区",
+                    //offset: new AMap.Pixel(27, 25)
+                }
+    });
+    new AwesomeMarker({
+        awesomeIcon: 'address-card',
+        //前景文字
+        iconLabel: {
+            style: {
+                color: '#fff' //设置文字颜色
+            }
+        },
+        //图标主题
+        iconTheme: 'default',
+
+        //背景图标样式
+        iconStyle: 'orange',
+
+        //...其他Marker选项...，不包括content
+        map: map,
+
+        position: [116.281709,39.82671],
+         label: {
+                    content: "订单14-时代财富天地",
+                    //offset: new AMap.Pixel(27, 25)
+                }
+    });
+    new AwesomeMarker({
+        awesomeIcon: 'address-card',
+        //前景文字
+        iconLabel: {
+            style: {
+                color: '#fff' //设置文字颜色
+            }
+        },
+        //图标主题
+        iconTheme: 'default',
+
+        //背景图标样式
+        iconStyle: 'orange',
+
+        //...其他Marker选项...，不包括content
+        map: map,
+
+        position: [116.300608,39.828278],
+         label: {
+                    content: "订单15-诺德中心",
+                    //offset: new AMap.Pixel(27, 25)
+                }
+    });
+new AwesomeMarker({
+        awesomeIcon: 'address-card',
+        //前景文字
+        iconLabel: {
+            style: {
+                color: '#fff' //设置文字颜色
+            }
+        },
+        //图标主题
+        iconTheme: 'default',
+
+        //背景图标样式
+        iconStyle: 'orange',
+
+        //...其他Marker选项...，不包括content
+        map: map,
+
+        position: [116.307076,39.828775],
+         label: {
+                    content: "订单17-中国通号大厦",
+                    //offset: new AMap.Pixel(27, 25)
+                }
+    });
+
+}
+                    </script>
+                </div>
+                <div class="tpl-alert"></div>
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+
+  <script src="/static/assets/js/jquery.min.js"></script>
+    <script src="/static/assets/js/amazeui.min.js"></script>
+    <script src="/static/assets/js/app.js"></script>
+
+</body>
+
+</html>

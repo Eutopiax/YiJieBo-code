@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="在校"
+        android:id="@+id/id1"
+        />
+    <item
+        android:id="@+id/id2"
+        android:title="毕业"
+        />
+    <item
+        android:title="休学"
+        android:id="@+id/id3"
+        />
+    <item
+        android:title="喵星"
+        android:id="@+id/id4"
+        />
+    <item
+        android:title="所有"
+        android:id="@+id/id5"
+        />
+</menu>

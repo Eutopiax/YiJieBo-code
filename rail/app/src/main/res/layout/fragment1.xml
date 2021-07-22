@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context="com.example.rail.Fragment1.Fragment1">
+
+<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--        android:id="@+id/bnv"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_marginStart="0dp"-->
+<!--        android:layout_marginEnd="0dp"-->
+<!--        android:layout_weight="5"-->
+<!--        android:background="?android:attr/windowBackground"-->
+<!--        app:labelVisibilityMode="labeled"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:menu="@menu/menu3" />-->
+
+<!--    <SearchView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_weight="5" />-->
+<!--    <LinearLayout-->
+<!--        android:layout_width="fill_parent"-->
+<!--        android:layout_height="fill_parent"-->
+<!--        android:orientation="vertical" >-->
+    <com.amap.api.maps.MapView android:layout_height="match_parent" android:layout_width="match_parent" android:id="@+id/map">
+
+    </com.amap.api.maps.MapView>
+
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/shape1"
+            tools:context=".MainActivity"
+           >
+
+
+            <!--        <Button-->
+            <!--            android:id="@+id/button"-->
+            <!--            android:layout_width="100dp"-->
+            <!--            android:layout_height="50dp"-->
+            <!--            android:layout_alignParentStart="true"-->
+            <!--            android:layout_alignParentTop="true"-->
+            <!--            android:layout_marginStart="13dp"-->
+            <!--            android:layout_marginLeft="30dp"-->
+            <!--            android:layout_marginTop="-1dp"-->
+            <!--            android:background="@android:color/dim_foreground_disabled_holo_dark"-->
+            <!--            android:text="标签" />-->
+
+            <!--        <TextView-->
+            <!--            android:id="@+id/textView10"-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="47dp"-->
+            <!--            android:background="@drawable/shape"-->
+            <!--            android:text="TextView" />-->
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/liebiao1" />
+
+            <Spinner
+                android:id="@+id/sp_type"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:entries="@array/menu_type"
+                android:paddingTop="20dp"
+                android:paddingRight="35dp"
+                android:paddingBottom="20dp"></Spinner>
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="60dp"
+                android:src="@drawable/searchh1" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/more1" />
+        </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/setlayout1"
+        android:background="#FFFFFF"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+
+        android:animateLayoutChanges="true">
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="48dp"
+            android:layout_height="38dp"
+            android:layout_alignBottom="@+id/destination"
+            android:layout_marginLeft="80dp"
+            android:layout_marginBottom="1dp"
+            android:gravity="center"
+            android:text="前往:"
+            android:textColor="#000000"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/destination"
+            android:layout_width="157dp"
+            android:layout_height="39dp"
+            android:layout_toRightOf="@+id/textView10"
+            android:background="@drawable/transparent1"
+            android:ems="19"
+            android:gravity="center"
+            android:hint="需要前往的目的地"
+            android:inputType="phone"
+            android:padding="1dp"
+            android:textSize="15dp"></TextView>
+
+        <com.example.rail.ui.fragment.PopLayou
+            android:id="@+id/pop_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/destination"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="-30dp" />
+        <com.example.rail.ui.fragment.PopLayou
+            android:id="@+id/pop_layout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pop_layout"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="-30dp"
+            >
+        </com.example.rail.ui.fragment.PopLayou>
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="39dp"
+            android:layout_below="@+id/pop_layout2"
+            android:layout_alignRight="@+id/textView10"
+            android:layout_marginTop="-15dp"
+            android:gravity="center"
+            android:text="出发时间:"
+            android:textColor="#000000"
+            android:textSize="15dp" />
+
+        <Button
+            android:id="@+id/xuanzeshijian"
+            android:layout_width="122dp"
+            android:layout_height="34dp"
+            android:layout_below="@+id/pop_layout2"
+            android:layout_toRightOf="@+id/textView11"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="-15dp"
+            android:gravity="center"
+            android:text="请选择出发时间"
+            android:textSize="12dp" />
+        <TextView
+            android:id="@+id/starttime"
+            android:layout_width="157dp"
+            android:layout_height="39dp"
+            android:layout_toRightOf="@+id/xuanzeshijian"
+            android:layout_alignBottom="@+id/xuanzeshijian"
+            android:text=""
+            android:gravity="center"
+            android:textSize="15dp"></TextView>
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="39dp"
+            android:layout_below="@+id/textView11"
+            android:layout_alignRight="@+id/textView11"
+            android:layout_marginTop="-10dp"
+            android:gravity="center"
+            android:text="到达时间:"
+            android:textColor="#000000"
+            android:textSize="15dp" />
+        <Button
+            android:id="@+id/xuanzeshijian2"
+            android:layout_width="122dp"
+            android:layout_height="34dp"
+            android:textSize="12dp"
+            android:layout_toRightOf="@+id/textView12"
+            android:layout_below="@+id/xuanzeshijian"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="0dp"
+            android:text="请选择到达时间" />
+        <TextView
+            android:id="@+id/endtime"
+            android:layout_width="157dp"
+            android:layout_height="39dp"
+            android:layout_toRightOf="@+id/xuanzeshijian2"
+            android:layout_alignBottom="@+id/xuanzeshijian2"
+            android:text=""
+            android:gravity="center"
+            android:textSize="15dp"></TextView>
+
+
+        <Button
+            android:id="@+id/setgeren"
+            android:layout_width="wrap_content"
+            android:layout_height="37dp"
+            android:textColor="#FFFFFF"
+            android:layout_toLeftOf="@+id/fasong"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="23dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/btn_bg_red1"
+            android:text="个性化设置" />
+        <Button
+            android:id="@+id/fasong"
+            android:layout_width="wrap_content"
+            android:layout_height="37dp"
+            android:textColor="#FFFFFF"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="23dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/btn_bg_red1"
+            android:text="发送请求" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/setlayout"
+        android:background="#FFFFFF"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:animateLayoutChanges="true">
+        <TextView
+            android:id="@+id/tv_def"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="370dp"
+            android:text="" />
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="80dp"
+            android:text="快捷性需求:" />
+        <SeekBar
+            android:id="@+id/seekbar"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="150dp"
+            android:maxHeight="2dp"
+            android:max="100"
+            android:progress="30"
+            android:progressDrawable="@drawable/seek_bar_bg"
+            />
+        <TextView
+            android:id="@+id/tv_def2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="370dp"
+            android:layout_below="@+id/tv_def"
+            android:text="" />
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="80dp"
+            android:layout_below="@+id/tv1"
+            android:text="准时性需求:" />
+        <SeekBar
+            android:id="@+id/seekbar2"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="150dp"
+            android:layout_below="@+id/seekbar"
+            android:maxHeight="2dp"
+            android:max="100"
+            android:progress="30"
+            android:progressDrawable="@drawable/seek_bar_bg"
+            />
+        <TextView
+            android:id="@+id/tv_def3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="370dp"
+            android:layout_below="@+id/tv_def2"
+            android:text="" />
+        <TextView
+            android:id="@+id/tv3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="80dp"
+            android:layout_below="@+id/tv2"
+            android:text="舒适性需求:" />
+        <SeekBar
+            android:id="@+id/seekbar3"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="150dp"
+            android:layout_below="@+id/seekbar2"
+            android:maxHeight="2dp"
+            android:max="100"
+            android:progress="30"
+            android:progressDrawable="@drawable/seek_bar_bg"
+            />
+        <TextView
+            android:id="@+id/tv_def4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="80dp"
+            android:layout_below="@+id/tv3"
+            android:text="" />
+
+<!--        <com.example.rail.ui.fragment.PopLayou-->
+<!--            android:id="@+id/pop_layout3"-->
+<!--            android:layout_alignParentTop="true"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="-10dp"-->
+<!--            android:layout_marginLeft="100dp"/>-->
+
+<!--        <com.example.rail.ui.fragment.PopLayou-->
+<!--            android:id="@+id/pop_layout4"-->
+<!--            android:layout_below="@+id/pop_layout3"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="-10dp"-->
+<!--            android:layout_marginLeft="100dp"/>-->
+
+<!--        <com.example.rail.ui.fragment.PopLayou-->
+<!--            android:id="@+id/pop_layout5"-->
+<!--            android:layout_below="@+id/pop_layout4"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="-10dp"-->
+<!--            android:layout_marginLeft="100dp"-->
+<!--            />-->
+        <Button
+            android:id="@+id/setback"
+            android:layout_width="wrap_content"
+            android:layout_height="37dp"
+            android:textColor="#FFFFFF"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="23dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/btn_bg_red"
+            android:text="确认" />
+    </RelativeLayout>
+    <!--    </LinearLayout>-->
+<!--       <LinearLayout-->
+<!--           android:id="@+id/mainview"-->
+<!--           android:layout_width="match_parent"-->
+<!--           android:layout_height="match_parent"-->
+<!--           android:layout_weight="1"-->
+<!--           android:orientation="vertical">-->
+<!--       </LinearLayout>-->
+    <RelativeLayout
+        android:id="@+id/setlayout3"
+        android:layout_width="326dp"
+        android:layout_height="133dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="69dp"
+        android:background="#FFFFFF"
+        android:animateLayoutChanges="true">
+
+        <TextView
+            android:id="@+id/back1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:textSize="20dp"
+            android:textColor="#000000"
+            android:text="123" />
+        <TextView
+            android:id="@+id/back2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/back1"
+            android:text="请准时前往上车地点" />
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/back2"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="#FF909090" />
+
+        <TextView
+            android:id="@+id/back3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="3dp"
+            android:layout_below="@+id/line"
+            android:text="123" />
+
+        <TextView
+            android:id="@+id/back4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="0dp"
+            android:layout_below="@+id/back3"
+            android:text="请准时前往上车地点" />
+
+    </RelativeLayout>
+   </RelativeLayout>

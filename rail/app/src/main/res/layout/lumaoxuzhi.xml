@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Fragment2.Fragment2">
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="313dp"
+        app:srcCompat="@drawable/lingyangmao"
+        tools:src="@drawable/lingyangmao" />
+
+
+    <ScrollView
+        android:layout_width="413dp"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="      接驳公交是解决城市大运量交通工具吸引力不强的重要手段。现有的针对确定型接
+驳公交线路规划问题的研究很多，但目前一般基于均质化假设，对于异质化需求的车辆
+调度的研究不多，且未并能充分考虑乘客快捷性、准时性、舒适度要求方面的差异。另
+外，随着无人驾驶车辆普及程度提高，在路径规划模型中需要对目标函数参数重新标定。
+本项目基于无人驾驶普及背景，尝试提出面向异质化需求的共享短途接驳系统，为将来
+我国城市短途接驳服务提供可靠的解决方案
+             接驳公交是解决城市大运量交通工具吸引力不强的重要手段。现有的针对确定型接驳公交线路规划问题的研究很多，
+    \n       但目前一般基于均质化假设，对于异质化需求的车辆调度的研究不多，且未并能充分考虑乘客快捷性
+    \n        、准时性、舒适度要求方面的差异。另外，随着无人驾驶车辆普及程度提高，在路径规划模型中需
+    \n        要对目标函数参数重新标定。本项目基于无人驾驶普及背景:
+    \n        尝试提出面向异质化需求的共享短途接驳系统，为将来我国城市短途接驳服务提供可靠的解决方案"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

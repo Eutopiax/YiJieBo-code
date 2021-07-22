@@ -1,0 +1,698 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>智慧养老系统</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+     <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/static/assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/static/assets/vendor/bootstrap/css/bootstrap.css" />
+
+
+		<link rel="stylesheet" href="/static/assets/vendor/font-awesome/css/font-awesome.css" />
+
+
+		<!-- Theme CSS -->
+		<link rel="stylesheet" href="/static/assets/stylesheets/theme.css" />
+
+		<!-- Theme Custom CSS -->
+		<link rel="stylesheet" href="/static/assets/stylesheets/theme-custom.css">
+
+		<!-- Head Libs -->
+		<script src="/static/assets/vendor/modernizr/modernizr.js"></script>
+
+
+    <link rel="stylesheet" href="/static/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/static/assets/css/admin.css">
+    <link rel="stylesheet" href="/static/assets/css/app.css">
+      <style type="text/css">
+
+
+            .dropbtn{
+                  margin-right:50px;
+            }
+            #personcenter.li a, .dropbtn {
+                display: inline-block;
+                color: #0a628f;
+                text-align: center;
+
+                text-decoration: none;
+            }
+
+            li.dropdown {
+                display: inline-block;
+            }
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #0a6999;
+                min-width: 60px;
+
+            }
+            .dropdown-content a {
+
+                padding: 12px 6px;
+                text-decoration: none;
+                display: block;
+                text-align: left;
+            }
+            .dropdown-content a:hover {
+                color: #ffbe40;
+
+            }
+
+
+    </style>
+
+	<style>
+body  {
+    background-image: url("/static/assets/img/background.png");
+}
+#am-topbar-brand h2{
+
+     text-align: center;
+     color: white;
+     font-family:"Impact";
+
+}
+.fc{
+     background-color: #fff;
+    height:670px;
+
+}
+.battery {
+    color: #34495e;
+    border: 1px solid currentColor;
+    display: inline-block;
+    width: 20px;
+    height: 10px;
+    position: relative;
+    border-radius: 2px;
+    display: border-box;
+    margin: 5px;
+    transition: color 500ms;
+}
+.battery::before,
+.battery::after {
+    content: "";
+    position: absolute;
+}
+
+.battery::before {
+    top: 2px;
+    bottom: 2px;
+    right: -3px;
+    width: 1px;
+    display: border-box;
+    border: 1px solid currentColor;
+    border-left: 0;
+}
+.battery::after {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 1px;
+    border-radius: 1px;
+    background-color: currentColor;
+    transition: right 500ms;
+}
+.battery.low {
+    color: #c0392b;
+}
+.battery.low::after {
+    right: 80%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.battery.med {
+    color: #f39c12;
+}
+.battery.med::after {
+    right: 40%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.battery.full {
+    color: #27ae60;
+}
+.battery[data-charge='0'],
+.battery[data-charge='1'],
+.battery[data-charge='2'],
+.battery[data-charge='3'] {
+    color: #c0392b;
+}
+.battery[data-charge='4'],
+.battery[data-charge='5'],
+.battery[data-charge='6'] {
+    color: #f39c12;
+}
+.battery[data-charge='7'],
+.battery[data-charge='8'],
+.battery[data-charge='9'],
+.battery[data-charge='10'] {
+    color: #27ae60;
+}
+.battery[data-charge='0']::after {
+    right: 100%;
+}
+.battery[data-charge='1']::after {
+    right: 85%;
+}
+.battery[data-charge='2']::after {
+    right: 80%;
+}
+.battery[data-charge='3']::after {
+    right: 70%;
+}
+.battery[data-charge='4']::after {
+    right: 60%;
+}
+.battery[data-charge='5']::after {
+    right: 50%;
+}
+.battery[data-charge='6']::after {
+    right: 40%;
+}
+.battery[data-charge='7']::after {
+    right: 30%;
+}
+.battery[data-charge='8']::after {
+    right: 20%;
+}
+.battery[data-charge='9']::after {
+    right: 10%;
+}
+.battery[data-charge='10']::after {
+    right: 0%;
+}
+
+
+	</style>
+
+</head>
+
+<body data-type="generalComponents" >
+
+
+    <header class="am-topbar am-topbar-inverse admin-header">
+        <div class="am-topbar-brand">
+{#            <a href="javascript:;" class="tpl-logo">#}
+{#                <img src="/static/assets/img/logo.png" alt="">#}
+{#            </a>#}
+
+        <img src="../static/assets/img/title.png">
+        </div>
+        <div class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right">
+
+        </div>
+
+
+
+        <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+
+            <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list tpl-header-list">
+
+ <div id="personcenter">
+                <ul>
+                 <li class="dropdown">
+                    <a id="a" href="javascript:void(0)" class="dropbtn" onclick="showList(this)">
+                        <img src="../static/assets/img/mima.png" style=""width="20px"height="20px">
+                    </a>
+                    <div class="dropdown-content" id="dropdown-a">
+                        <a href="/modifyPassword">修改密码</a>
+                        <a href="/">登出</a>
+
+                    </div>
+                </li>
+                </ul>
+                <script type="text/javascript">
+            function showList(o) {
+                //1.把其他的二级ul都隐藏，
+        //        hideList("dropdown-content" + o.id);
+                //把其他的二级ul隐藏方式1
+                hideList("dropdown-" + o.id);
+                //把其他的二级ul隐藏方式2
+        //        hideList('');
+
+
+                //2.再切换自己的show。
+
+        //        document.getElementById("dropdown-" + o.id).classList.toggle("show");
+                var drop = document.getElementById("dropdown-" + o.id);
+                if (drop.classList.contains('show')) {
+                    drop.classList.remove('show');
+        //            alert("yichu");
+                }else{
+                    drop.classList.add('show');
+        //            alert("xianshi");
+                }
+            }
+
+            //隐藏不是自己对应的下拉div。
+            function hideList(option) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.id != option) {
+                        if (openDropdown.classList.contains('show')) {
+                            openDropdown.classList.remove('show');
+                        }
+                    }
+                }
+            }
+
+
+
+            window.onclick = function(e) {
+                if (!e.target.matches('.dropbtn')) {
+                    hideList("");
+                }
+            }
+</script>
+                    </div>
+            </ul>
+        </div>
+    </header>
+
+
+
+
+
+
+
+    <div class="tpl-page-container tpl-page-header-fixed">
+
+{#        左侧导航栏#}
+        <div class="tpl-left-nav tpl-left-nav-hover">
+            <div class="tpl-left-nav-title">
+                功能列表
+            </div>
+            <div class="tpl-left-nav-list">
+                <ul class="tpl-left-nav-menu">
+                    <li class="tpl-left-nav-item">
+                        <a href="/teacher_index" class="nav-link">
+                            <i class="am-icon-home"></i>
+                            <span>系统首页</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/guanliban" class="nav-link active">
+                            <i class="am-icon-bar-chart "></i>
+                            <span>车辆状态管理</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+{#        左侧导航栏#}
+
+        <div class="tpl-content-wrapper">
+
+            <div class="fc">
+
+                <div class="tpl-block">
+  <table class="am-table am-table-striped am-table-hover table-main"border="8">
+{##}
+                                <thead>
+                                     <tr>
+                                         <th class="table-title">班车号</th>
+                                        <th class="table-title">当前路线</th>
+                                         <th class="table-title">状态</th>
+                                        <th class="table-title">电量</th>
+                                        <th class="table-title">操作</th>
+
+                                    </tr>
+                                    </thead>
+
+                                        <tbody id="adminBody">
+                                                    <tr>
+                                                        <td>
+                                                            1
+                                                        </td>
+                                                        <td>
+                                                            丰台科技园地铁站->时代财富天地->科学城->汉威国际广场->丰台科技园地铁站
+                                                        </td>
+                                                        <td>
+                                                            行驶中
+                                                        </td>
+                                                        <td>
+
+                                     <div data-charge='9' class="battery"></div>
+                                                        </td>
+
+                                                    <td>
+                                                       <input type="button" value="召回" style="background-color: #218cd3;color: #FFFFFF">
+
+                                                            <input type="button" value="查看车内情况" style="background-color: #218cd3;color: #FFFFFF">
+
+                                                    </td>
+                                                    </tr>
+<tr>                                                 <tr>
+                                                        <td>
+                                                            2
+                                                        </td>
+                                                        <td>
+                                                            丰台科技园地铁站->崇新大厦->中电传媒大厦->丰台科技园地铁站
+                                                        </td>
+                                                        <td>
+                                                            行驶中
+                                                        </td>
+                                                        <td>
+
+                                                         <div data-charge='8' class="battery"></div>
+                                                        </td>
+
+                                                    <td>
+                                                       <input type="button" value="召回" style="background-color: #218cd3;color: #FFFFFF">
+
+                                                            <input type="button" value="查看车内情况" style="background-color: #218cd3;color: #FFFFFF">
+
+                                                    </td>
+                                                    </tr>
+                                                     <tr>
+                                                        <td>
+                                                            3
+                                                        </td>
+                                                        <td>
+                                                            丰台科技园地铁站->建科兴达大厦->北京汽车博物馆->丰台科技园地铁站
+                                                        </td>
+                                                        <td>
+                                                            行驶中
+                                                        </td>
+                                                        <td>
+                                                         <div data-charge='4' class="battery"></div>
+                                                        </td>
+
+                                                    <td>
+                                                       <input type="button" value="召回" style="background-color: #218cd3;color: #FFFFFF">
+
+                                                            <input type="button" value="查看车内情况" style="background-color: #218cd3;color: #FFFFFF">
+
+                                                    </td>
+                                                    </tr>
+                                                     <tr>
+                                                        <td>
+                                                            4
+                                                        </td>
+                                                        <td>
+                                                            丰台科技园地铁站->中国通号大厦->丰台科技园地铁站
+                                                        </td>
+                                                        <td>
+                                                            行驶中
+                                                        </td>
+                                                        <td>
+
+                                                         <div data-charge='10' class="battery"></div>
+                                                        </td>
+
+                                                    <td>
+                                                       <input type="button" value="召回" style="background-color: #218cd3;color: #FFFFFF">
+
+                                                            <input type="button" value="查看车内情况" style="background-color: #218cd3;color: #FFFFFF">
+
+                                                    </td>
+                                                    </tr>
+                                          <tr>
+                                                        <td>
+                                                            5
+                                                        </td>
+                                                        <td>
+                                                            丰台科技园地铁站->丰台金茂广场->丰台科技园区->中海外建工集团有效公司->丰台科技园地铁站
+                                                        </td>
+                                                        <td>
+                                                            行驶中
+                                                        </td>
+                                                        <td>
+
+                                                         <div data-charge='6' class="battery"></div>
+                                                        </td>
+
+                                                    <td>
+                                                       <input type="button" value="召回" style="background-color: #218cd3;color: #FFFFFF">
+
+                                                            <input type="button" value="查看车内情况" style="background-color: #218cd3;color: #FFFFFF">
+
+                                                    </td>
+                                                    </tr>
+                                          <tr>
+                                                        <td>
+                                                            6
+                                                        </td>
+                                                        <td>
+                                                            丰台科技园地铁站->丰台科技园地铁站
+                                                        </td>
+                                                        <td>
+                                                            充电中
+                                                        </td>
+                                                        <td>
+
+                                                         <div id="animated">
+                                                                <div class="battery"></div>
+                                                         </div>
+                                                        </td>
+
+                                                    <td>
+                                                       <input type="button" value="召回" style="background-color: #218cd3;color: #FFFFFF">
+
+                                                            <input type="button" value="查看车内情况" style="background-color: #218cd3;color: #FFFFFF">
+
+                                                    </td>
+                                                    </tr>
+                                             <tr>
+                                                        <td>
+                                                            7
+                                                        </td>
+                                                        <td>
+                                                            丰台科技园地铁站->丰台科技园地铁站
+                                                        </td>
+                                                        <td>
+                                                            充电中
+                                                        </td>
+                                                        <td>
+
+                                                       <div data-charge='10' class="battery"></div>
+
+                                                        </td>
+
+                                                    <td>
+                                                       <input type="button" value="召回" style="background-color: #218cd3;color: #FFFFFF">
+
+                                                            <input type="button" value="查看车内情况" style="background-color: #218cd3;color: #FFFFFF">
+
+                                                    </td>
+                                                    </tr>
+                                           <tr>
+                                                        <td>
+                                                            8
+                                                        </td>
+                                                        <td>
+                                                            丰台科技园地铁站->东旭国际中心->丰台科技园地铁站
+                                                        </td>
+                                                        <td>
+                                                            行驶中
+                                                        </td>
+                                                        <td>
+
+                                                       <div data-charge='2' class="battery"></div>
+
+                                                        </td>
+
+                                                    <td>
+                                                       <input type="button" value="召回" style="background-color: #218cd3;color: #FFFFFF">
+
+                                                            <input type="button" value="查看车内情况" style="background-color: #218cd3;color: #FFFFFF">
+
+                                                    </td>
+                                                    </tr>
+                                        <tr>
+                                                        <td>
+                                                            9
+                                                        </td>
+                                                        <td>
+                                                            丰台科技园地铁站->专利大厦->SEC大厦->金伟凯生物科技园->丰台科技园地铁站
+                                                        </td>
+                                                        <td>
+                                                            行驶中
+                                                        </td>
+                                                        <td>
+
+                                                       <div data-charge='8' class="battery"></div>
+
+                                                        </td>
+
+                                                    <td>
+                                                       <input type="button" value="召回" style="background-color: #218cd3;color: #FFFFFF">
+
+                                                            <input type="button" value="查看车内情况" style="background-color: #218cd3;color: #FFFFFF">
+
+                                                    </td>
+                                                    </tr>
+                                         <tr>
+                                                        <td>
+                                                            10
+                                                        </td>
+                                                        <td>
+                                                            丰台科技园地铁站->总部广场->丰台科技园地铁站
+                                                        </td>
+                                                        <td>
+                                                            行驶中
+                                                        </td>
+                                                        <td>
+
+                                                       <div data-charge='8' class="battery"></div>
+
+                                                        </td>
+
+                                                    <td>
+                                                       <input type="button" value="召回" style="background-color: #218cd3;color: #FFFFFF">
+
+                                                            <input type="button" value="查看车内情况" style="background-color: #218cd3;color: #FFFFFF">
+
+                                                    </td>
+                                                    </tr>
+                                        <tr>
+                                                        <td>
+                                                            11
+                                                        </td>
+                                                        <td>
+                                                            丰台科技园地铁站->诺德中心->丰台科技园地铁站
+                                                        </td>
+                                                        <td>
+                                                            行驶中
+                                                        </td>
+                                                        <td>
+
+                                                       <div data-charge='3' class="battery"></div>
+
+                                                        </td>
+
+                                                    <td>
+                                                       <input type="button" value="召回" style="background-color: #218cd3;color: #FFFFFF">
+
+                                                            <input type="button" value="查看车内情况" style="background-color: #218cd3;color: #FFFFFF">
+
+                                                    </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            12
+                                                        </td>
+                                                        <td>
+                                                            丰台科技园地铁站->建科兴达大厦->北京汽车博物馆->丰台科技园地铁站
+                                                        </td>
+                                                        <td>
+                                                            行驶中
+                                                        </td>
+                                                        <td>
+
+                                                       <div data-charge='9' class="battery"></div>
+
+                                                        </td>
+
+                                                    <td>
+                                                       <input type="button" value="召回" style="background-color: #218cd3;color: #FFFFFF">
+
+                                                            <input type="button" value="查看车内情况" style="background-color: #218cd3;color: #FFFFFF">
+
+                                                    </td>
+                                                    </tr>
+         <tr>
+                                                        <td>
+                                                            13
+                                                        </td>
+                                                        <td>
+                                                            丰台科技园地铁站->丰台科技园地铁站
+                                                        </td>
+                                                        <td>
+                                                            充电中
+                                                        </td>
+                                                        <td>
+                                                         <div id="animated1">
+                                                                <div class="battery"></div>
+                                                         </div>
+                                                        </td>
+
+                                                    <td>
+                                                       <input type="button" value="召回" style="background-color: #218cd3;color: #FFFFFF">
+
+                                                            <input type="button" value="查看车内情况" style="background-color: #218cd3;color: #FFFFFF">
+
+                                                    </td>
+                                                    </tr>
+                                        </tbody>
+                                </table>
+                    <div class="am-g">
+                        <div class="am-u-sm-12">
+                                                            <div class="batteryIcon">
+                                                                <span class="batteryIconBody">
+                                                                    <span id="batteryIconProgress" class="batteryIconProgress"></span>
+                                                                    <label class="batteryIconContent" id="batteryIconContent"></label>
+                                                                    <span class="batteryIconHead"></span>
+                                                                </span>
+                                                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tpl-alert"></div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+	<!-- Vendor -->
+		<script src="/static/assets/vendor/jquery/jquery.js"></script>
+		<script src="/static/assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
+		<script src="/static/assets/vendor/bootstrap/js/bootstrap.js"></script>
+		<script src="/static/assets/vendor/nanoscroller/nanoscroller.js"></script>
+		<script src="/static/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+		<script src="/static/assets/vendor/magnific-popup/magnific-popup.js"></script>
+		<script src="/static/assets/vendor/jquery-placeholder/jquery.placeholder.js"></script>
+
+		<!-- Theme Base, Components and Settings -->
+		<script src="/static/assets/javascripts/theme.js"></script>
+
+		<!-- Theme Custom -->
+		<script src="/static/assets/javascripts/theme.custom.js"></script>
+
+		<!-- Theme Initialization Files -->
+		<script src="/static/assets/javascripts/theme.init.js"></script>
+   <script type="text/javascript">
+        var b = document.querySelector("#animated .battery");
+
+            (function updateBattery() {
+                b.dataset.charge = Math.floor(Math.random() * 11);
+                setTimeout(updateBattery, 1000);
+            })();
+            var b1 = document.querySelector("#animated1 .battery");
+
+            (function updateBattery() {
+                b1.dataset.charge = Math.floor(Math.random() * 11);
+                setTimeout(updateBattery, 1000);
+            })();
+    </script>
+  <script src="/static/assets/js/jquery.min.js"></script>
+    <script src="/static/assets/js/amazeui.min.js"></script>
+    <script src="/static/assets/js/app.js"></script>
+</body>
+
+</html>

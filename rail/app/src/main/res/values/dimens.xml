@@ -1,0 +1,35 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">32px</dimen>
+    <dimen name="activity_vertical_margin">32px</dimen>
+
+    <!--主界面底部图标大小-->
+    <dimen name="main_bottom_iv_horizontal_size">58px</dimen>
+    <dimen name="main_bottom_iv_vertical_size">54px</dimen>
+
+    <!--列表item间距-->
+    <dimen name="item_margin_left_and_right">25px</dimen>
+    <dimen name="item_margin_top_and_bottom">15px</dimen>
+
+    <!--选项间距-->
+    <dimen name="option_item_margin_top">42px</dimen>
+    <dimen name="option_item_margin_left">40px</dimen>
+    <dimen name="option_item_margin_right">40px</dimen>
+
+    <!--界面的padding-->
+    <dimen name="padding_top_and_bottom">30dp</dimen>
+    <dimen name="padding_left_and_right">15dp</dimen>
+
+    <!--消息框的上下margin-->
+    <dimen name="message_padding">3dp</dimen>
+
+
+    <!-- *********************************顶部选项卡区域********************************* -->
+    <!-- 选项卡的内边距 -->
+    <dimen name="tab_top_auto_padding">10dp</dimen>
+    <!-- 选项卡标题的文字大小 -->
+    <dimen name="tab_top_auto_title_size">18sp</dimen>
+    <!-- 选项卡标题的下划线高度 -->
+    <dimen name="tab_top_auto_height">3dp</dimen>
+</resources>
+
