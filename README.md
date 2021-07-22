@@ -1,1 +1,2 @@
 # YiJieBo-code
+仓库包含客户端android程序代码和后台flask框架管理系统以及模型算法
